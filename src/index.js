@@ -59,14 +59,6 @@ app.use(cors());
 // Your other middleware and routes...
 app.use(express.json());
 
-app.post('/signup', (req, res) => {
-  // Your signup logic here
-  res.status(200).json({ message: 'Signup successful' });
-});
-
-app.listen(5000, () => {
-  console.log('Server running on port 5000');
-});
 
 // Middleware
 app.use(express.json());
