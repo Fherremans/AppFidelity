@@ -37,7 +37,7 @@ async function run() {
   }
 }
 run().catch(console.dir);
-db = client.db("myAppDB")
+db = client.db("myAppDB");
 
 
 const PORT = process.env.PORT;
