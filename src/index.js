@@ -78,6 +78,9 @@ app.post('/signup', async (req, res) => {
   const { email, password } = req.body;
 
   try {
+    if (!db) {
+      throw new Error('Database not connected');
+    }
     const usersCollection = db.collection('myAppCollec');
     const existingUser = await usersCollection.findOne({ email });
 
@@ -103,6 +106,9 @@ app.post('/login', async (req, res) => {
   const { email, password } = req.body;
 
   try {
+    if (!db) {
+      throw new Error('Database not connected');
+    }
     const usersCollection = db.collection('myAppCollec');
     const user = await usersCollection.findOne({ email });
 
