@@ -63,9 +63,11 @@ app.post('/signup', async (req, res) => {
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
+    console.log("I have an hashed password")
     const newUser = { email, password: hashedPassword };
 
     await usersCollection.insertOne(newUser);
+    console.log("I can write to the DB")
     res.status(201).json({ message: 'User created successfully' });
   } catch (error) {
     console.error('Signup error:', error);
