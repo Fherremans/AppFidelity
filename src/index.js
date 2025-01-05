@@ -45,6 +45,27 @@ const MONGO_URI = process.env.MONGO_URI;
 const JWT_SECRET = process.env.JWT_SECRET;
 
 
+// Enable CORS for specific origin
+//app.use(cors({
+//  origin: 'http://localhost:3000', // Replace with your frontend URL
+//  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
+//  credentials: true, // If you need to send cookies or authentication
+//}));
+
+app.use(cors());
+
+// Your other middleware and routes...
+app.use(express.json());
+
+app.post('/signup', (req, res) => {
+  // Your signup logic here
+  res.status(200).json({ message: 'Signup successful' });
+});
+
+app.listen(5000, () => {
+  console.log('Server running on port 5000');
+});
+
 // Middleware
 app.use(express.json());
 
