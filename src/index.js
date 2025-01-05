@@ -55,7 +55,7 @@ app.post('/signup', async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    const usersCollection = db.collection('users');
+    const usersCollection = db.collection('myAppCollec');
     const existingUser = await usersCollection.findOne({ email });
 
     if (existingUser) {
@@ -78,7 +78,7 @@ app.post('/login', async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    const usersCollection = db.collection('users');
+    const usersCollection = db.collection('myAppCollec');
     const user = await usersCollection.findOne({ email });
 
     if (!user) {
