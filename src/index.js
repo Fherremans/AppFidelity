@@ -39,7 +39,6 @@ async function run() {
   }
 }
 run().catch(console.dir);
-module.exports = db;
 
 
 const PORT = process.env.PORT;
@@ -55,9 +54,6 @@ const JWT_SECRET = process.env.JWT_SECRET;
 //}));
 
 app.use(cors());
-
-// Your other middleware and routes...
-app.use(express.json());
 
 
 // Middleware
