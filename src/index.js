@@ -30,12 +30,10 @@ async function run() {
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });	
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
-
-  } finally {
-    // Ensures that the client will close when you finish/error
-    await client.close();
+  } catch (error) {
+    console.log ('error:',error.message);
   }
-}
+};
 run().catch(console.dir);
 
 let db = client.db("myAppDB");
@@ -58,18 +56,19 @@ app.use(cors());
 
 // Middleware
 app.use(express.Router());
-
+app.use(express.json());
 // Routes
 
 // 1. User Signup
 app.post('/signup', async (req, res) => {
-  const { email, password } = req.body;
 
   try {
     if (!db) {
       throw new Error('Database not connected');
     }
     const usersCollection = db.collection('myAppCollec');
+    const { email, password } = req.body;
+    console.log('email:', email);
     const existingUser = await usersCollection.findOne({ email });
 
     if (existingUser) {
